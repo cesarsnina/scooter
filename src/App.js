@@ -14,17 +14,16 @@ class App{
     }
 
     static scootersAtStation(cityName){
-        return Station.listOfScooters(cityName.length)
+        return Station.listOfScooters(cityName)
     }
+    
     rentScooter(userEmail, pickUpStation) {
         let currentUser
         let rentingScooter
         for(let i=0; i<App.userList.length; i++) {
             if (App.userList[i].email === userEmail) {
                 currentUser = App.userList[i] 
-
             }
-
         }
         for(let i=0; i<Station.stations.length; i++) {
             if(Station.stations[i].cityName === pickUpStation.cityName) {
@@ -50,11 +49,11 @@ bronxStation.addScooter(scooter2)
 bronxStation.addScooter(scooter3)
 
 
-//App.scootersAtStation("The Bronx")
+App.scootersAtStation("The Bronx")
 
 const scooterApp = new App()
-App.addUser(cesar)
 
+App.addUser(cesar)
 
 scooterApp.rentScooter(cesar.email, bronxStation)
 
