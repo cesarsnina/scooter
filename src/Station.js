@@ -1,25 +1,33 @@
 class Station {
     static stations = [];
-    // 'Manhattan', 'The Bronx', 'Queens', 
-    // 'Broocklyn', 'Staten Island'
+    // 'Manhattan', 'The Bronx', 'Queens', 'Broocklyn', 'Staten Island'
+    // {name: 'bronx', scooters:[]},{name:"queens", scooters:[]}
 
     constructor(cityName) {
         this.cityName = cityName;
         this.scooters = [];
+        this.needChargeScooters = []
         this.damagedScooter = [];
         this.constructor.stations.push(this);
     }
 
-    static listOfScooter(station) {
-        const cityObj = this.stations.find((ele) => {
+    static listOfScooters(station) {
+        const cityObj = Station.stations.find(ele => 
             ele.cityName === station
-        })
-        console.log(cityObj.scooters);
+        )
+        return cityObj.scooters;
     }
 
     addScooter(scooter) {
-        //will only add if charge is full and broken is false
-        this.scooters.push(scooter);
+        if (scooter.isDamaged){
+            this.damagedScooter.push(scooter)
+        } else {
+            if (scooter.isCharged){
+                this.scooters.push(scooter);
+            } else {
+                this.needChargeScooters.push(scooter);
+            }
+        }
     }
 
     faultyScooter(id) {
