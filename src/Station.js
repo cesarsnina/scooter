@@ -1,5 +1,7 @@
 class Station {
     static stations = [];
+    // 'Manhattan', 'The Bronx', 'Queens', 
+    // 'Broocklyn', 'Staten Island'
 
     constructor(cityName) {
         this.cityName = cityName;
