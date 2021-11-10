@@ -11,7 +11,11 @@ class User {
     }
 
     availableScooter(station) {
-        Station.listOfScooter();
+        Station.listOfScooter(station);
+    }
+
+    findStation() {
+        console.log(Station.stations);
     }
 
     rentScooter(destination) {

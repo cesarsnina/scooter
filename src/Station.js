@@ -1,12 +1,18 @@
 class Station {
+    static stations = [];
+
     constructor(cityName) {
         this.cityName = cityName;
         this.scooters = [];
         this.damagedScooter = [];
+        this.constructor.stations.push(this);
     }
 
-    static listOfScooter() {
-        console.log(this.scooters);
+    static listOfScooter(station) {
+        const cityObj = this.stations.find((ele) => {
+            ele.cityName === station
+        })
+        console.log(cityObj.scooters);
     }
 
     addScooter(scooter) {
