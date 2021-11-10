@@ -1,3 +1,5 @@
+const Scooter = require('./Scooter')
+
 class Station {
     static stations = [];
     // 'Manhattan', 'The Bronx', 'Queens', 'Broocklyn', 'Staten Island'

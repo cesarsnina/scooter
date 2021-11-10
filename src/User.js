@@ -1,5 +1,6 @@
 const Station = require('./Station');
 const App = require("./App");
+const Scooter = require('./Scooter')
 const { validateAge, validateCash, validateUser } = require('./validate');
 
 class User {
@@ -8,6 +9,7 @@ class User {
         this.email = email;
         this.age = age;
         this.cash = cash;
+        this.currentScooter = null
     }
 
     availableScooter(station) {
