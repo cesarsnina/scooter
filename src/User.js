@@ -1,10 +1,11 @@
 const Station = require('./Station');
-const { validateAge, validateCash } = require('./validate');
+const App = require("./App");
+const { validateAge, validateCash, validateUser } = require('./validate');
 
 class User {
-    constructor(firstName, lastName, age, cash) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(fullName, email, age, cash) {
+        this.fullName = fullName;
+        this.email = email;
         this.age = age;
         this.cash = cash;
     }
@@ -16,7 +17,8 @@ class User {
     rentScooter(destination) {
         const age = validateAge(this.age);
         const cash = validateCash(this.cash);
-        if (age && cash) {
+        const isUser = validateUser(this.email);
+        if (age && cash && isUser) {
             this.cash = this.cash - 12;
             // set destination
             console.log('Have fun and stay safe!');
@@ -29,8 +31,8 @@ class User {
 
     }
 }
-
-// const person1 = new User('Larry', 'Anderson', 19, 20);
+// const person1 = new User('Larry Anderson', 'larry@gmail.com', 19, 20);
+// person1.rentScooter("NYC");
+// App.addUser(person1.email);
 // person1.rentScooter('NYC');
-
 module.exports = User;
