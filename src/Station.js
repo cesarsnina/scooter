@@ -16,6 +16,7 @@ class Station {
     }
 
     addScooter(scooter) {
+        //will only add if charge is full and broken is false
         this.scooters.push(scooter);
     }
 
