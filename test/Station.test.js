@@ -22,7 +22,7 @@ describe("Station class", () => {
         expect(Array.isArray(Station.stations)).toBe(true)
      })
      test('station has a list of scooters', () => {
-         console.log(Station.listOfScooters('Manhattan'))
+         
         expect(Array.isArray(Station.listOfScooters('Manhattan'))).toBe(true)
      })
 })

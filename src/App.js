@@ -51,6 +51,7 @@ class App {
                 rentingScooter = Station.stations[i].scooters.pop()
             }
         }
+        
         if (currentUser === undefined) {
             return false
         } else {

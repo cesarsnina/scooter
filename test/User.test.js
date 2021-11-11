@@ -31,9 +31,10 @@ describe("User class datatypes", () => {
     const testApp = new App()
     const testStation = new Station('testville')
     const testScooter = new Scooter(111, 'testville')
+
     test('user rents scooter',()=>{
         testStation.addScooter(testScooter)
-        testApp.rentScooter('joe@gmail.com',testStation) // should just put in city name not the station instance
+        testApp.rentScooter(testUser2.email,testStation.cityName) // should just put in city name not the station instance
 
         expect(testUser2.currentScooter).toBe(testScooter)
 
