@@ -1,25 +1,47 @@
-const User = require('./User')
-const Station = require('./Station')
-const Scooter = require('./Scooter')
+const User = require('./User');
+const Station = require('./Station');
+const Scooter = require('./Scooter');
 
-class App{
-    // list of users
-    static userList = []
+class App {
+    // list of users who downloaded the app
+    static userList = [];
 
-    // add user to the userList
+    // add user who downloaded the app to the userList
     static addUser(user){
-        this.userList.push(user)
-    }
+        console.log('addUser: User was successfully added');
+        this.userList.push(user);
+    };
 
-    // return a list of users
-    static listOfUser() {
-        console.log(App.userList);
-    }
+    // return a list of users who downloaded the app for admin
+    listOfUser() {
+        console.log('listOfUser: ', App.userList);
+        return App.userList;
+    };
 
+    // repair all the scooter from the station provided
+    fixDamagedScooter(station) {
+        const cityObj = Station.stations.find(city =>
+            city.cityName === station
+        )
+        for (let i = 0; i < cityObj.damagedScooter.length; i++) {
+            cityObj.damagedScooter[i].isDamaged = false;
+            cityObj.scooters.push(cityObj.damagedScooter[i]);
+        }
+        cityObj.damagedScooter = [];
+    };
+
+    // return a list of station
+    static listOfStation() {
+        console.log('listOfStation: ', Station.stations);
+        return Station.stations
+    };
+    
     // return list of scooter at this station
     static scootersAtStation(cityName){
-        return Station.listOfScooters(cityName)
-    }
+        const listOfScooters = Station.listOfScooters(cityName);
+        console.log('scootersAtStation: ', listOfScooters)
+        return listOfScooters;
+    };
     
     // assign scooter to a user and remove scooter from station
     rentScooter(userEmail, pickUpStation) {
@@ -43,24 +65,25 @@ class App{
         //for(let i=0; i<App.)
    //}     
 
-}
-const cesar = new User("Cesar", 'cesar@gmail.com', 20, 100)
-const scooter1 = new Scooter("100", "The Bronx", true, false)
-const scooter2 = new Scooter("101", "The Bronx", true, false)
-const scooter3 = new Scooter("102", "The Bronx", true, false)
-const bronxStation = new Station("The Bronx")
-bronxStation.addScooter(scooter1)
-bronxStation.addScooter(scooter2)
-bronxStation.addScooter(scooter3)
+};
+
+// const cesar = new User("Cesar", 'cesar@gmail.com', 20, 100)
+// const scooter1 = new Scooter("100", "The Bronx", true, false)
+// const scooter2 = new Scooter("101", "The Bronx", true, false)
+// const scooter3 = new Scooter("102", "The Bronx", true, false)
+// const bronxStation = new Station("The Bronx")
+// bronxStation.addScooter(scooter1)
+// bronxStation.addScooter(scooter2)
+// bronxStation.addScooter(scooter3)
 
 
-App.scootersAtStation("The Bronx")
+// App.scootersAtStation("The Bronx")
 
-const scooterApp = new App()
+// const scooterApp = new App()
 
-App.addUser(cesar)
+// App.addUser(cesar)
 
-scooterApp.rentScooter(cesar.email, bronxStation)
+// scooterApp.rentScooter(cesar.email, bronxStation)
 
 module.exports = App;
 

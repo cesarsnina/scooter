@@ -1,6 +1,6 @@
 const Station = require('./Station');
-const App = require("./App");
-const Scooter = require('./Scooter')
+const App = require('./App');
+const Scooter = require('./Scooter');
 const { validateAge, validateCash, validateUser } = require('./validate');
 
 class User {
@@ -10,19 +10,14 @@ class User {
         this.age = age;
         this.cash = cash;
         this.hasApp = false;
-        this.currentScooter = null
-    }
+        this.currentScooter = null;
+    };
 
-    // return list of scooter at that station
-    availableScooter(station) {
-        Station.listOfScooter(station);
-    }
-
-    // return a list of station
-    findStation() {
-        console.log(Station.stations);
-    }
-
+    // download the scooter app
+    downloadApp() {
+        this.hasApp = true;
+        App.addUser(this);
+    };
 
     rentScooter(destination) {
         const age = validateAge(this.age);
@@ -40,10 +35,11 @@ class User {
     reportBroken(id, station) {
 
     }
-}
+};
 
 // const person1 = new User('Larry Anderson', 'larry@gmail.com', 19, 20);
-// person1.downloadApp;
+// person1.downloadApp();
 // App.addUser(person1.email);
 // person1.rentScooter('NYC');
+
 module.exports = User;

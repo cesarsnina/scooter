@@ -4,7 +4,7 @@ class Scooter {
         this.origin = origin;
         this.isCharged = isCharged;
         this.isDamaged = isDamaged;
-    }
-}
+    };
+};
 
 module.exports = Scooter;
