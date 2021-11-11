@@ -5,19 +5,45 @@ const Station = require("./../src/Station")
 
 
 describe("User class datatypes", () => {
-    const scooter1 = new Scooter("100", "The Bronx", true, false)
-    const scooter2 = new Scooter("101", "The Bronx", true, false)
-    const scooter3 = new Scooter("102", "The Bronx", true, false)
-    const bronxStation = new Station("The Bronx")
-    bronxStation.addScooter(scooter1)
-    bronxStation.addScooter(scooter2)
-    bronxStation.addScooter(scooter3)
-    test("User has scooter assigned to them when renting scooter", () =>{
-        const cesar = new User("Cesar", "cesar@gmail.com", 20, 100)
-        cesar.downloadApp()
-        App.addUser(cesar)
-        const scooterApp = new App()
-        scooterApp.rentScooter(cesar.email, bronxStation)
-        expect(cesar.currentScooter.id).toBe("102")
+    const testUser = new User("Cesar", "cesar@gmail.com", 20)
+    const testUser2 = new User('joe', 'joe@gmail.com', 22,45)
+
+    test("User has name , email, age ", () =>{
+        expect(typeof testUser.fullName).toBe("string")
+        expect(testUser.fullName).toBe('Cesar')
+        expect(typeof testUser.email).toBe("string")
+        expect(testUser.email).toBe('cesar@gmail.com')
+        expect(typeof testUser.age).toBe('number')
+        expect(testUser.age).toBe(20)
+        expect(typeof testUser.cash).toBe('number')
+        expect(testUser.cash).toBe(0)
+        expect(testUser2.cash).toBe(45)
+        expect(typeof testUser.hasApp).toBe('boolean')
+        expect(testUser.hasApp).toBe(false)
     })
+    testUser2.downloadApp(App)
+    test('user downloads app',()=>{
+
+        expect(testUser2.hasApp).toBe(true)
+        expect(App.userList.length).toBe(1)
+
+    })
+    const testApp = new App()
+    const testStation = new Station('testville')
+    const testScooter = new Scooter(111, 'testville')
+    test('user rents scooter',()=>{
+        testStation.addScooter(testScooter)
+        testApp.rentScooter('joe@gmail.com',testStation) // should just put in city name not the station instance
+
+        expect(testUser2.currentScooter).toBe(testScooter)
+
+    })
+    test('user returns scooter',()=>{
+        testApp.returnScooter(testUser2, testStation)
+
+        expect(testUser2.cash).toBe(33)
+        expect(testUser2.currentScooter).toBe(null)
+        
+    })
+
 })
