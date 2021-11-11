@@ -1,7 +1,7 @@
 const App = require('./App');
 
 class User {
-    constructor(fullName, email, age, cash) {
+    constructor(fullName, email, age, cash = 0)  { //added default cash to 0
         this.fullName = fullName;
         this.email = email;
         this.age = age;
