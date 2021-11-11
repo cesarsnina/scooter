@@ -63,29 +63,45 @@ class App {
     }
 
     
-    //returnScooter(userScooter, dropOffStation) {
-        //for(let i=0; i<App.)
-   //}     
+    returnScooter(returningUser, dropOffStation) {
+        // go through the array of users
+        for(let i=0; i<App.userList.length; i++) {
+            //if user is found
+            if(App.userList[i] === returningUser) {
+                //the scooter to return is the user found in the array
+                let returnedScooter = returningUser.currentScooter
+                // add the scooter back to the dropOffStation
+                dropOffStation.addScooter(returnedScooter)
+                //deuct payment
+                returningUser.cash = returningUser.cash - 12
+            }
+        }
+   }      
 
 };
 
-// const cesar = new User("Cesar", 'cesar@gmail.com', 20, 100)
-// const scooter1 = new Scooter("100", "The Bronx", true, false)
-// const scooter2 = new Scooter("101", "The Bronx", true, false)
-// const scooter3 = new Scooter("102", "The Bronx", true, false)
-// const bronxStation = new Station("The Bronx")
-// bronxStation.addScooter(scooter1)
-// bronxStation.addScooter(scooter2)
-// bronxStation.addScooter(scooter3)
+const cesar = new User("Cesar", 'cesar@gmail.com', 20, 100)
+const denille= new User('Denille', 'denille@gmail.com', 28, 90)
 
+const scooter1 = new Scooter("100", "The Bronx", true, false)
+const scooter2 = new Scooter("101", "The Bronx", true, false)
+const scooter3 = new Scooter("102", "The Bronx", true, false)
+const bronxStation = new Station("The Bronx")
+bronxStation.addScooter(scooter1)
+bronxStation.addScooter(scooter2)
+bronxStation.addScooter(scooter3)
 
-// App.scootersAtStation("The Bronx")
+const scooterApp = new App()
 
-// const scooterApp = new App()
+App.addUser(cesar)
+App.addUser(denille)
 
-// App.addUser(cesar)
-
-// scooterApp.rentScooter(cesar.email, bronxStation)
+scooterApp.rentScooter(cesar.email, bronxStation)
+scooterApp.rentScooter(denille.email, bronxStation)
+App.scootersAtStation('The Bronx')
+scooterApp.returnScooter(denille, bronxStation)
+App.scootersAtStation('The Bronx')
+console.log(denille.cash)
 
 module.exports = App;
 
