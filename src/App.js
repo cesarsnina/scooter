@@ -74,8 +74,42 @@ class App {
                 returningUser.cash = returningUser.cash - 12
             }
         }
-    }          
+   }    
 
 };
 
+// const cesar = new User("Cesar", 'cesar@gmail.com', 20, 100)
+// const denille= new User('Denille', 'denille@gmail.com', 28, 90)
+
+// const scooter1 = new Scooter("100", "The Bronx", true, false)
+// const scooter2 = new Scooter("101", "The Bronx", true, false)
+// const scooter3 = new Scooter("102", "The Bronx", true, false)
+// const bronxStation = new Station("The Bronx")
+// bronxStation.addScooter(scooter1)
+// bronxStation.addScooter(scooter2)
+// bronxStation.addScooter(scooter3)
+
+// const scooterApp = new App()
+
+// App.addUser(cesar)
+// App.addUser(denille)
+
+// scooterApp.rentScooter(cesar.email, bronxStation)
+// scooterApp.rentScooter(denille.email, bronxStation)
+// App.scootersAtStation('The Bronx')
+// scooterApp.returnScooter(denille, bronxStation)
+// App.scootersAtStation('The Bronx')
+// console.log(denille.cash)
+
 module.exports = App;
+
+
+
+/*
+rent scooter
+find station // how many scooter in each station
+report broken
+make payment
+available scooter // should be called when renting
+
+*/
