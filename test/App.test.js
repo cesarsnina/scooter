@@ -15,4 +15,5 @@ describe("App class datatypes", () => {
     test("App returns scooter list at specified station", () => {
         expect(App.scootersAtStation("The Bronx").length).toBe(3)
     }) 
+    //add test for addUser without downloadApp
 })
