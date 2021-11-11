@@ -1,13 +1,14 @@
 const User = require('./User');
 const Station = require('./Station');
 const Scooter = require('./Scooter');
+const { validateUser, validateIfUserHasApp } = require('./validate');
 
 class App {
     // list of users who downloaded the app
     static userList = [];
 
     // add user who downloaded the app to the userList
-    static addUser(user){
+    static addUser(user) {
         console.log('addUser: User was successfully added');
         this.userList.push(user);
     };
@@ -43,7 +44,8 @@ class App {
         return listOfScooters;
     };
     
-    // assign scooter to a user and remove scooter from station
+    // assign scooter to a user and remove scooter from station\
+    //CJ - add if validate age/cash => rentScooter else console.log("Sorry, you're too young/don't have enough money")
     rentScooter(userEmail, pickUpStation) {
         let currentUser
         let rentingScooter

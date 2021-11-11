@@ -19,19 +19,6 @@ class User {
         App.addUser(this);
     };
 
-    rentScooter(destination) {
-        const age = validateAge(this.age);
-        const cash = validateCash(this.cash);
-        const isUser = validateUser(this.email);
-        if (age && cash && isUser) {
-            this.cash = this.cash - 12;
-            // set destination
-            console.log('Have fun and stay safe!');
-        } else {
-            console.log('Sorry, maybe next time!');
-        }
-    }
-
     reportBroken(id, station) {
 
     }

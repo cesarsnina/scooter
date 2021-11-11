@@ -36,4 +36,4 @@ const validateIfUserHasApp = (email) => {
     return true;
 };
 
-module.exports = { validateAge, validateCash, validateUser };
+module.exports = { validateAge, validateCash, validateUser, validateIfUserHasApp };
