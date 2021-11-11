@@ -1,7 +1,4 @@
-const User = require('./User');
 const Station = require('./Station');
-const Scooter = require('./Scooter');
-const { validateUser, validateIfUserHasApp } = require('./validate');
 
 class App {
     // list of users who downloaded the app
@@ -9,13 +6,11 @@ class App {
 
     // add user who downloaded the app to the userList
     static addUser(user) {
-        console.log('addUser: User was successfully added');
         this.userList.push(user);
     };
 
     // return a list of users who downloaded the app for admin
     listOfUser() {
-        console.log('listOfUser: ', App.userList);
         return App.userList;
     };
 
@@ -33,19 +28,16 @@ class App {
 
     // return a list of station
     static listOfStation() {
-        console.log('listOfStation: ', Station.stations);
         return Station.stations
     };
     
     // return list of scooter at this station
     static scootersAtStation(cityName){
         const listOfScooters = Station.listOfScooters(cityName);
-        console.log('scootersAtStation: ', listOfScooters)
         return listOfScooters;
     };
     
-    // assign scooter to a user and remove scooter from station\
-    //CJ - add if validate age/cash => rentScooter else console.log("Sorry, you're too young/don't have enough money")
+    // assign scooter to a user and remove scooter from station
     rentScooter(userEmail, pickUpStation) {
         let currentUser
         let rentingScooter
@@ -55,14 +47,18 @@ class App {
             }
         }
         for(let i=0; i<Station.stations.length; i++) {
-            if(Station.stations[i].cityName === pickUpStation.cityName) {
+            if(Station.stations[i].cityName === pickUpStation) {
                 rentingScooter = Station.stations[i].scooters.pop()
             }
         }
-        currentUser.currentScooter = rentingScooter
+        if (currentUser === undefined) {
+            return false
+        } else {
+            currentUser.currentScooter = rentingScooter
+        }
     }
 
-    
+    // assign scooter to new station and remove scooter from user
     returnScooter(returningUser, dropOffStation) {
         // go through the array of users
         for(let i=0; i<App.userList.length; i++) {
@@ -72,46 +68,14 @@ class App {
                 let returnedScooter = returningUser.currentScooter
                 // add the scooter back to the dropOffStation
                 dropOffStation.addScooter(returnedScooter)
+                //removes scooter from user
+                returningUser.currentScooter = null
                 //deuct payment
                 returningUser.cash = returningUser.cash - 12
             }
         }
-   }      
+    }          
 
 };
 
-const cesar = new User("Cesar", 'cesar@gmail.com', 20, 100)
-const denille= new User('Denille', 'denille@gmail.com', 28, 90)
-
-const scooter1 = new Scooter("100", "The Bronx", true, false)
-const scooter2 = new Scooter("101", "The Bronx", true, false)
-const scooter3 = new Scooter("102", "The Bronx", true, false)
-const bronxStation = new Station("The Bronx")
-bronxStation.addScooter(scooter1)
-bronxStation.addScooter(scooter2)
-bronxStation.addScooter(scooter3)
-
-const scooterApp = new App()
-
-App.addUser(cesar)
-App.addUser(denille)
-
-scooterApp.rentScooter(cesar.email, bronxStation)
-scooterApp.rentScooter(denille.email, bronxStation)
-App.scootersAtStation('The Bronx')
-scooterApp.returnScooter(denille, bronxStation)
-App.scootersAtStation('The Bronx')
-console.log(denille.cash)
-
 module.exports = App;
-
-
-
-/*
-rent scooter
-find station // how many scooter in each station
-report broken
-make payment
-available scooter // should be called when renting
-
-*/

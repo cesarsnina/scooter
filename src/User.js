@@ -1,7 +1,4 @@
-const Station = require('./Station');
 const App = require('./App');
-const Scooter = require('./Scooter');
-const { validateAge, validateCash, validateUser } = require('./validate');
 
 class User {
     constructor(fullName, email, age, cash) {
@@ -14,19 +11,14 @@ class User {
     };
 
     // download the scooter app
-    downloadApp() {
+    downloadApp(app) {
         this.hasApp = true;
-        App.addUser(this);
+        app.addUser(this);
     };
 
     reportBroken(id, station) {
 
     }
 };
-
-// const person1 = new User('Larry Anderson', 'larry@gmail.com', 19, 20);
-// person1.downloadApp();
-// App.addUser(person1.email);
-// person1.rentScooter('NYC');
 
 module.exports = User;
