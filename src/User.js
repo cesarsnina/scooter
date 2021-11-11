@@ -9,16 +9,20 @@ class User {
         this.email = email;
         this.age = age;
         this.cash = cash;
+        this.hasApp = false;
         this.currentScooter = null
     }
 
+    // return list of scooter at that station
     availableScooter(station) {
         Station.listOfScooter(station);
     }
 
+    // return a list of station
     findStation() {
         console.log(Station.stations);
     }
+
 
     rentScooter(destination) {
         const age = validateAge(this.age);
@@ -37,8 +41,9 @@ class User {
 
     }
 }
+
 // const person1 = new User('Larry Anderson', 'larry@gmail.com', 19, 20);
-// person1.rentScooter("NYC");
+// person1.downloadApp;
 // App.addUser(person1.email);
 // person1.rentScooter('NYC');
 module.exports = User;

@@ -3,20 +3,25 @@ const Station = require('./Station')
 const Scooter = require('./Scooter')
 
 class App{
+    // list of users
     static userList = []
 
+    // add user to the userList
     static addUser(user){
         this.userList.push(user)
     }
 
+    // return a list of users
     static listOfUser() {
         console.log(App.userList);
     }
 
+    // return list of scooter at this station
     static scootersAtStation(cityName){
         return Station.listOfScooters(cityName)
     }
     
+    // assign scooter to a user and remove scooter from station
     rentScooter(userEmail, pickUpStation) {
         let currentUser
         let rentingScooter

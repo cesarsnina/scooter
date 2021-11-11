@@ -13,6 +13,7 @@ class Station {
         this.constructor.stations.push(this);
     }
 
+    // return a list of scooter at that station
     static listOfScooters(station) {
         const cityObj = Station.stations.find(ele => 
             ele.cityName === station
@@ -20,6 +21,7 @@ class Station {
         return cityObj.scooters;
     }
 
+    // add scooter to this station
     addScooter(scooter) {
         if (scooter.isDamaged){
             this.damagedScooter.push(scooter)
@@ -32,6 +34,7 @@ class Station {
         }
     }
 
+    // user can report faulty scooter
     faultyScooter(id) {
         for (let i = 0; i < this.scooters.length; i++) {
             if (id === this.scooters[i].id) {
