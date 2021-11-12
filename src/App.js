@@ -54,7 +54,12 @@ class App {
         if (currentUser === undefined) {
             return false
         } else {
-            currentUser.currentScooter = rentingScooter
+            if (currentUser.cash < 12) {
+                console.log("Sorry, you only have $", currentUser.cash, " and renting a scooter is at least $12.")
+                return false 
+            }else{
+                currentUser.currentScooter = rentingScooter
+            }   
         }
     }
 

@@ -16,7 +16,7 @@ class User {
     downloadApp() {
         this.hasApp = true;
         this.app.addUser(this);
-        console.log('App download was successful')
+        console.log('App download was successful for', this.fullName)
     };
 
     // removes scooter from being rented and add it for repair

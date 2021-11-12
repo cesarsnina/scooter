@@ -4,9 +4,9 @@ const Scooter = require('./../src/Scooter')
 describe("Station class", () => {
     let manhattanStation = new Station('Manhattan');
 
-        const scooter1 = new Scooter(1, manhattanStation, true, false)
-        const scooter2 = new Scooter(2, manhattanStation, true, false)
-        const scooter3 = new Scooter(3, manhattanStation, true, false)
+        const scooter1 = new Scooter("1", manhattanStation, true, false)
+        const scooter2 = new Scooter("2", manhattanStation, true, false)
+        const scooter3 = new Scooter("3", manhattanStation, true, false)
 
         manhattanStation.addScooter(scooter1)
         manhattanStation.addScooter(scooter2)
