@@ -32,16 +32,6 @@ class Station {
             }
         }
     };
-
-    // user can report faulty scooter
-    faultyScooter(id) {
-        for (let i = 0; i < this.scooters.length; i++) {
-            if (id === this.scooters[i].id) {
-                const scooter = this.scooters.splice(i, 1);
-                this.damagedScooter.push(scooter);
-            };
-        };
-    };
 };
 
 module.exports = Station;
