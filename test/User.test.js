@@ -21,7 +21,7 @@ describe("User class datatypes", () => {
         expect(typeof testUser.hasApp).toBe('boolean')
         expect(testUser.hasApp).toBe(false)
     })
-    testUser2.downloadApp(App)
+    testUser2.downloadApp()
     test('user downloads app',()=>{
 
         expect(testUser2.hasApp).toBe(true)

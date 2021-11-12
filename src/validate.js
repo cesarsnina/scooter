@@ -18,22 +18,13 @@ const validateCash = (cash) => {
     return true;
 };
 
-// check if user exist, if not then add user
-// ***** user will be added once they download the app *****
-const validateUser = (email) => {
-    if (App.userList.indexOf(email) >= 0) {
-        console.log("Looks like you're already in the system!");
-    } else {
-        console.log("You're not in the system, let's add you now :)");
-        App.addUser(email)
-    }
-    return true
-};
-
 // checks if user has app
 const validateIfUserHasApp = (email) => {
-    if (App.userList.indexOf(email) === -1) return false;
+    if (App.userList.indexOf(email) === -1) {
+        console.log('must download the scooter app to access');
+        return false;
+    }
     return true;
 };
 
-module.exports = { validateAge, validateCash, validateUser, validateIfUserHasApp };
+module.exports = { validateAge, validateCash, validateIfUserHasApp };

@@ -18,17 +18,17 @@ class App {
     fixDamagedScooter(station) {
         const cityObj = Station.stations.find(city =>
             city.cityName === station
-        )
+        );
         for (let i = 0; i < cityObj.damagedScooter.length; i++) {
             cityObj.damagedScooter[i].isDamaged = false;
             cityObj.scooters.push(cityObj.damagedScooter[i]);
-        }
+        };
         cityObj.damagedScooter = [];
     };
 
     // return a list of station
     static listOfStation() {
-        return Station.stations
+        return Station.stations;
     };
     
     // return list of scooter at this station
@@ -51,7 +51,6 @@ class App {
                 rentingScooter = Station.stations[i].scooters.pop()
             }
         }
-        
         if (currentUser === undefined) {
             return false
         } else {
@@ -66,23 +65,17 @@ class App {
             //if user is found
             if(App.userList[i] === returningUser) {
                 //the scooter to return is the user found in the array
-                let returnedScooter = returningUser.currentScooter
-                returningUser.currentScooter = null // to remove scooter from the user
+                let returnedScooter = returningUser.currentScooter;
+                returningUser.currentScooter = null; // to remove scooter from the user
                 // add the scooter back to the dropOffStation
-                dropOffStation.addScooter(returnedScooter)
+                dropOffStation.addScooter(returnedScooter);
                 //removes scooter from user
                 
                 //deuct payment
-                returningUser.cash = returningUser.cash - 12
+                returningUser.cash = returningUser.cash - 12;
             }
-        }
-    }    
-
+        };
+    };    
 };
 
-
-
 module.exports = App;
-
-
-

@@ -31,9 +31,9 @@ describe("App class datatypes", () => {
     const statenStation = new Station("Staten Island")
 
     test("App returns array of all users from static function", () => {
-        user1.downloadApp(App)
-        user2.downloadApp(App)
-        user3.downloadApp(App)
+        user1.downloadApp()
+        user2.downloadApp()
+        user3.downloadApp()
         expect(App.userList.length).toBe(3)
     })
 
@@ -64,7 +64,7 @@ describe("App class datatypes", () => {
     })
 
     test("App allows user to rent scooter", () => {
-        user4.downloadApp(App)
+        user4.downloadApp()
         const user4App = new App()
         user4App.rentScooter(user4.email, "Staten Island")
         expect(user4.currentScooter.id).toBe("114")
@@ -95,7 +95,7 @@ describe("App class datatypes", () => {
     test("App takes 12 cash away from user after returning scooter", () => {
         const user6 = new User("Person 5", "person5@gmail.com", 20, 100)
         const initCash = user6.cash
-        user6.downloadApp(App)
+        user6.downloadApp()
         const user6App = new App()
         user6App.rentScooter(user6.email, "Staten Island")
         user6App.returnScooter(user6, bronxStation)

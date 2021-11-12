@@ -16,7 +16,7 @@ class Station {
     static listOfScooters(station) {
         const cityObj = Station.stations.find(city => 
             city.cityName === station
-        )
+        );
         return cityObj.scooters;
     };
 
@@ -39,8 +39,8 @@ class Station {
             if (id === this.scooters[i].id) {
                 const scooter = this.scooters.splice(i, 1);
                 this.damagedScooter.push(scooter);
-            }
-        }
+            };
+        };
     };
 };
 
