@@ -19,8 +19,10 @@ const validateCash = (cash) => {
 };
 
 // checks if user has app
-const validateIfUserHasApp = (email) => {
-    if (App.userList.indexOf(email) === -1) {
+const validateIfUserHasApp = (email, App) => {
+    const hasApp = App.userList.find(ele => 
+        ele.email === email)
+    if (!hasApp) {
         console.log('must download the scooter app to access');
         return false;
     }
