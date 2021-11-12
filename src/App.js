@@ -1,4 +1,5 @@
 const Station = require('./Station');
+const { validateIfUserHasApp } = require('./validate');
 
 class App {
     // list of users who downloaded the app
@@ -39,6 +40,7 @@ class App {
     
     // assign scooter to a user and remove scooter from station
     rentScooter(userEmail, pickUpStation) {
+        if (!validateIfUserHasApp(userEmail, App)) return;
         let currentUser
         let rentingScooter
         for(let i=0; i<App.userList.length; i++) {
