@@ -40,7 +40,6 @@ class App {
     
     // assign scooter to a user and remove scooter from station
     rentScooter(userEmail, pickUpStation) {
-        if (!validateIfUserHasApp(userEmail)) return;
         let currentUser
         let rentingScooter
         for(let i=0; i<App.userList.length; i++) {

@@ -18,13 +18,4 @@ const validateCash = (cash) => {
     return true;
 };
 
-// checks if user has app
-const validateIfUserHasApp = (email) => {
-    if (App.userList.indexOf(email) === -1) {
-        console.log('must download the scooter app to access');
-        return false;
-    }
-    return true;
-};
-
 module.exports = { validateAge, validateCash, validateIfUserHasApp };
