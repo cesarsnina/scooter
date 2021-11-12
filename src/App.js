@@ -1,5 +1,4 @@
 const Station = require('./Station');
-const validateIfUserHasApp = require('./validate');
 
 class App {
     // list of users who downloaded the app

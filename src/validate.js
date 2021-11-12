@@ -18,4 +18,4 @@ const validateCash = (cash) => {
     return true;
 };
 
-module.exports = { validateAge, validateCash, validateIfUserHasApp };
+module.exports = { validateAge, validateCash };
