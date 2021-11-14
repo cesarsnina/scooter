@@ -18,11 +18,4 @@ describe("Station class", () => {
     test("Scooters can be added to the station", () => {
         expect(manhattanStation.scooters.length).toBe(3)
     })
-     test('listOfStations returns a list', () => {
-        expect(Array.isArray(Station.stations)).toBe(true)
-     })
-     test('station has a list of scooters', () => {
-         
-        expect(Array.isArray(Station.listOfScooters('Manhattan'))).toBe(true)
-     })
 })
