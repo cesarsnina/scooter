@@ -41,31 +41,30 @@ class App {
     };
     
     // assign scooter to a user and remove scooter from station
-    rentScooter(userEmail, pickUpStation) {
-        if (!validateIfUserHasApp(userEmail)) return;
-        let currentUser
-        let rentingScooter
-        for(let i=0; i<App.userList.length; i++) {
-            if (App.userList[i].email === userEmail) {
-                currentUser = App.userList[i] 
-            }
-        }
-        for(let i=0; i<Station.stations.length; i++) {
-            if(Station.stations[i].cityName === pickUpStation) {
-                rentingScooter = Station.stations[i].scooters.pop()
-            }
-        }
-        if (currentUser === undefined) {
-            return false
-        } else {
-            if (currentUser.cash < 12) {
-                console.log("Sorry, you only have $", currentUser.cash, " and renting a scooter is at least $12.")
-                return false 
-            }else{
-                currentUser.currentScooter = rentingScooter
-            }   
-        }
-    }
+    // rentScooter(userEmail, pickUpStation) {
+    //     let currentUser
+    //     let rentingScooter
+    //     for(let i=0; i<App.userList.length; i++) {
+    //         if (App.userList[i].email === userEmail) {
+    //             currentUser = App.userList[i]
+    //         }
+    //     }
+    //     for(let i=0; i<Station.stations.length; i++) {
+    //         if(Station.stations[i].cityName === pickUpStation) {
+    //             rentingScooter = Station.stations[i].scooters.pop()
+    //         }
+    //     }
+    //     if (currentUser === undefined) {
+    //         return false
+    //     } else {
+    //         if (currentUser.cash < 12) {
+    //             console.log("Sorry, you only have $", currentUser.cash, " and renting a scooter is at least $12.")
+    //             return false
+    //         }else{
+    //             currentUser.currentScooter = rentingScooter
+    //         }
+    //     }
+    // }
 
     // assign scooter to new station and remove scooter from user
     returnScooter(returningUser, dropOffStation) {

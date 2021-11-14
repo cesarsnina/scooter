@@ -1,5 +1,9 @@
 const App = require('./App');
 const Station = require('./Station');
+const { validateCash,
+        validateIfUserHasApp,
+        validateIfStationHasScooter,
+        validateAge } = require('./validate');
 
 class User {
     constructor(fullName, email, age, cash = 0)  {
@@ -37,6 +41,19 @@ class User {
         }
         console.log('id provided doesn\'t exist');
     };
+
+    // assign scooter to a user and remove scooter from station
+    rentScooter(pickUpStation) {
+        if (!validateIfUserHasApp(this.email) ||
+            !validateCash(this.cash) ||
+            !validateIfStationHasScooter(pickUpStation) ||
+            !validateAge) return;
+
+        const rentingScooter = Station.stations.find(station => 
+            station.cityName === pickUpStation).scooters.shift();
+
+        this.currentScooter = rentingScooter;
+    }
 };
 
 module.exports = User;
