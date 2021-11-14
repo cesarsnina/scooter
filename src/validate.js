@@ -38,5 +38,16 @@ const validateIfStationHasScooter = (station) => {
     return true;
 }
 
-module.exports = { validateAge, validateCash,
-            validateIfUserHasApp, validateIfStationHasScooter };
+const validateIfStationExist = (station) => {
+    if (App.listOfStation().indexOf(station) === -1) {
+        console.log('Station provided doesn\'t exist')
+        return false;
+    }
+    return true;
+}
+
+module.exports = {  validateAge,
+                    validateCash,
+                    validateIfUserHasApp,
+                    validateIfStationHasScooter,
+                    validateIfStationExist };

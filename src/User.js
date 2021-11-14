@@ -3,7 +3,8 @@ const Station = require('./Station');
 const { validateCash,
         validateIfUserHasApp,
         validateIfStationHasScooter,
-        validateAge } = require('./validate');
+        validateAge, 
+        validateIfStationExist} = require('./validate');
 
 class User {
     constructor(fullName, email, age, cash = 0)  {
@@ -25,13 +26,12 @@ class User {
 
     // removes scooter from being rented and add it for repair
     reportBroken(id, station) {
+        if (!validateIfStationExist(station)) return;
+
         const city = Station.stations.find(city => 
             city.cityName === station
         )
-        if (!city) {
-            console.log('station provided doesn\'t exist');
-            return;
-        }
+
         for (let i = 0; i < city.scooters.length; i++) {
             if (city.scooters[i].id === id) {
                 city.damagedScooter
@@ -47,7 +47,8 @@ class User {
         if (!validateIfUserHasApp(this.email) ||
             !validateCash(this.cash) ||
             !validateIfStationHasScooter(pickUpStation) ||
-            !validateAge) return;
+            !validateAge ||
+            !validateIfStationExist(pickUpStation)) return;
 
         const rentingScooter = Station.stations.find(station => 
             station.cityName === pickUpStation).scooters.shift();
