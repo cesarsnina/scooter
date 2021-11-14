@@ -46,8 +46,17 @@ const validateIfStationExist = (station) => {
     return true;
 }
 
+const validateIfUserHasScooter = (user => {
+    if (user.currentScooter !== null) {
+        console.log('Please return your scooter before renting another');
+        return false;
+    }
+    return true;
+})
+
 module.exports = {  validateAge,
                     validateCash,
                     validateIfUserHasApp,
                     validateIfStationHasScooter,
-                    validateIfStationExist };
+                    validateIfStationExist,
+                    validateIfUserHasScooter };
