@@ -29,4 +29,14 @@ const validateIfUserHasApp = (email) => {
     return true;
 };
 
-module.exports = { validateAge, validateCash, validateIfUserHasApp };
+// checks if station has scooter
+const validateIfStationHasScooter = (station) => {
+    if (App.scootersAtStation(station).length < 1) {
+        console.log('Sorry, There\'s no scooter available at this station');
+        return false;
+    }
+    return true;
+}
+
+module.exports = { validateAge, validateCash,
+            validateIfUserHasApp, validateIfStationHasScooter };
