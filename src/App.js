@@ -66,24 +66,24 @@ class App {
     //     }
     // }
 
-    // assign scooter to new station and remove scooter from user
-    returnScooter(returningUser, dropOffStation) {
-        // go through the array of users
-        for(let i=0; i<App.userList.length; i++) {
-            //if user is found
-            if(App.userList[i] === returningUser) {
-                //the scooter to return is the user found in the array
-                let returnedScooter = returningUser.currentScooter;
-                returningUser.currentScooter = null; // to remove scooter from the user
-                // add the scooter back to the dropOffStation
-                dropOffStation.addScooter(returnedScooter);
-                //removes scooter from user
+    // // assign scooter to new station and remove scooter from user
+    // returnScooter(returningUser, dropOffStation) {
+    //     // go through the array of users
+    //     for(let i=0; i<App.userList.length; i++) {
+    //         //if user is found
+    //         if(App.userList[i] === returningUser) {
+    //             //the scooter to return is the user found in the array
+    //             let returnedScooter = returningUser.currentScooter;
+    //             returningUser.currentScooter = null; // to remove scooter from the user
+    //             // add the scooter back to the dropOffStation
+    //             dropOffStation.addScooter(returnedScooter);
+    //             //removes scooter from user
                 
-                //deuct payment
-                returningUser.cash = returningUser.cash - 12;
-            }
-        };
-    };    
+    //             //deuct payment
+    //             returningUser.cash = returningUser.cash - 12;
+    //         }
+    //     };
+    // };    
 };
 
 module.exports = App;

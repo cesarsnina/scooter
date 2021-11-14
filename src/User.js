@@ -4,7 +4,8 @@ const { validateCash,
         validateIfUserHasApp,
         validateIfStationHasScooter,
         validateAge, 
-        validateIfStationExist} = require('./validate');
+        validateIfStationExist,
+        validateIfUserHasScooter } = require('./validate');
 
 class User {
     constructor(fullName, email, age, cash = 0)  {
@@ -45,16 +46,28 @@ class User {
     // assign scooter to a user and remove scooter from station
     rentScooter(pickUpStation) {
         if (!validateIfUserHasApp(this.email) ||
+            !validateAge() ||
             !validateCash(this.cash) ||
-            !validateIfStationHasScooter(pickUpStation) ||
-            !validateAge ||
-            !validateIfStationExist(pickUpStation)) return;
+            !validateIfStationExist(pickUpStation) ||
+            !validateIfUserHasScooter() ||
+            !validateIfStationHasScooter(pickUpStation)) return;
 
         const rentingScooter = Station.stations.find(station => 
             station.cityName === pickUpStation).scooters.shift();
 
         this.currentScooter = rentingScooter;
-    }
+    };
+
+    // assign scooter to new station and remove scooter from user
+    returnScooter(dropOffStation) {
+        if (!validateIfStationExist(dropOffStation)) return;
+
+        dropOffStation.addScooter(this.currentScooter);
+
+        this.currentScooter = null;
+
+        this.cash = this.cash - 12;
+    };
 };
 
 module.exports = User;
