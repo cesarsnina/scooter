@@ -19,7 +19,7 @@ const validateCash = (cash) => {
 };
 
 // checks if user has app
-const validateIfUserHasApp = (email, App) => {
+const validateIfUserHasApp = (email) => {
     const hasApp = App.userList.find(ele => 
         ele.email === email)
     if (!hasApp) {

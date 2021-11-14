@@ -34,13 +34,15 @@ class App {
     
     // return list of scooter at this station
     static scootersAtStation(cityName){
-        const listOfScooters = Station.listOfScooters(cityName);
-        return listOfScooters;
+        const cityObj = Station.stations.find(city => 
+            city.cityName === cityName
+        );
+        return cityObj.scooters;
     };
     
     // assign scooter to a user and remove scooter from station
     rentScooter(userEmail, pickUpStation) {
-        if (!validateIfUserHasApp(userEmail, App)) return;
+        if (!validateIfUserHasApp(userEmail)) return;
         let currentUser
         let rentingScooter
         for(let i=0; i<App.userList.length; i++) {
