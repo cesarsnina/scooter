@@ -1,5 +1,3 @@
-const Scooter = require('./Scooter');
-
 class Station {
     static stations = [];
 
@@ -13,12 +11,16 @@ class Station {
 
     // add scooter to this station
     addScooter(scooter) {
+        scooter.origin = this.cityName;
         if (scooter.isDamaged){
+            console.log(`scooter ${scooter.id} is damaged`);
             this.damagedScooter.push(scooter);
         } else {
             if (scooter.isCharged){
+                console.log(`scooter ${scooter.id} was added to ${this.cityName}`);
                 this.scooters.push(scooter);
             } else {
+                console.log(`scooter ${scooter.id} needs more charge`);
                 this.needChargeScooters.push(scooter);
             }
         }

@@ -22,21 +22,23 @@ class User {
     downloadApp() {
         this.hasApp = true;
         this.app.addUser(this);
-        console.log('App download was successful for', this.fullName)
+        console.log(`App download was successful for ${this.fullName}`);
     };
 
     // removes scooter from being rented and add it for repair
     reportBroken(id, station) {
-        if (!validateIfStationExist(station)) return;
+        if (!validateIfStationExist(station) ||
+            !validateIfUserHasApp(this.email)) return;
 
         const city = Station.stations.find(city => 
-            city.cityName === station
+            city.cityName === station.cityName
         )
 
         for (let i = 0; i < city.scooters.length; i++) {
             if (city.scooters[i].id === id) {
                 city.damagedScooter
                     .push(city.scooters.splice(i, 1));
+                console.log(`${this.fullName} reported scooter ${id} damaged`);
                 return;
             }
         }
@@ -46,15 +48,15 @@ class User {
     // assign scooter to a user and remove scooter from station
     rentScooter(pickUpStation) {
         if (!validateIfUserHasApp(this.email) ||
-            !validateAge() ||
+            !validateAge(this.age) ||
             !validateCash(this.cash) ||
             !validateIfStationExist(pickUpStation) ||
-            !validateIfUserHasScooter() ||
+            !validateIfUserHasScooter(this) ||
             !validateIfStationHasScooter(pickUpStation)) return;
 
         const rentingScooter = Station.stations.find(station => 
-            station.cityName === pickUpStation).scooters.shift();
-
+            station.cityName === pickUpStation.cityName).scooters.shift();
+        console.log(`${this.fullName} rented scooter ${rentingScooter.id}`);
         this.currentScooter = rentingScooter;
     };
 
@@ -63,6 +65,7 @@ class User {
         if (!validateIfStationExist(dropOffStation)) return;
 
         dropOffStation.addScooter(this.currentScooter);
+        console.log(`${this.fullName} returned scooter ${this.currentScooter.id}`);
 
         this.currentScooter = null;
 

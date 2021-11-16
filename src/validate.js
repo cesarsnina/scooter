@@ -39,8 +39,12 @@ const validateIfStationHasScooter = (station) => {
 }
 
 const validateIfStationExist = (station) => {
-    if (App.listOfStation().indexOf(station) === -1) {
-        console.log('Station provided doesn\'t exist')
+    const cities = App.listOfStation().map((city) => {
+        return city.cityName;
+    })
+
+    if (cities.indexOf(station.cityName) === -1) {
+        console.log('Station provided doesn\'t exist');
         return false;
     }
     return true;
