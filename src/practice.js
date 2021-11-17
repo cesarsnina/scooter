@@ -3,32 +3,32 @@ const { stationData, userData, scooterData } = require('./data/seed');
 
 const Admin = new App();
 
-// bronx { scooter:2, isCharged:0, isDamaged:2 }
-stationData[0].addScooter(scooterData[0]);
-stationData[0].addScooter(scooterData[1]);
+// the bronx { scooter:2, isCharged:0, isDamaged:2 }
+stationData[0].addScooter(scooterData[0]); // damaged
+stationData[0].addScooter(scooterData[1]); // damaged
 stationData[0].addScooter(scooterData[2]); // good
 stationData[0].addScooter(scooterData[3]); // good
 
-// manhattan { scooter:2, isCharged:3, isDamaged:1 }
-stationData[1].addScooter(scooterData[4]);
-stationData[1].addScooter(scooterData[5]);
+// manhattan { scooter:2, isCharged:0, isDamaged:1 }
+stationData[1].addScooter(scooterData[4]); // damaged
+stationData[1].addScooter(scooterData[5]); // good
 stationData[1].addScooter(scooterData[6]); // good
 stationData[1].addScooter(scooterData[7]); // good
-stationData[1].addScooter(scooterData[8]);
-stationData[1].addScooter(scooterData[9]);
+stationData[1].addScooter(scooterData[8]); // good
+stationData[1].addScooter(scooterData[9]); // good
 
 // queens { scooter:1, isCharged:0, isDamaged:1 }
-stationData[2].addScooter(scooterData[10]);
+stationData[2].addScooter(scooterData[10]); // damaged
 stationData[2].addScooter(scooterData[11]); // good
 
 // brooklyn { scooter:3, isCharged:0, isDamaged:2 }
-stationData[3].addScooter(scooterData[12]);
+stationData[3].addScooter(scooterData[12]); // damaged
 stationData[3].addScooter(scooterData[13]); // good
 stationData[3].addScooter(scooterData[14]); // good
-stationData[3].addScooter(scooterData[15]);
+stationData[3].addScooter(scooterData[15]); // damaged
 stationData[3].addScooter(scooterData[16]); // good
 
-// statenIsland { scooter:3, isCharged:0, isDamaged:0 }
+// staten Island { scooter:3, isCharged:0, isDamaged:0 }
 stationData[4].addScooter(scooterData[17]); // good
 stationData[4].addScooter(scooterData[18]); // good
 stationData[4].addScooter(scooterData[19]); // good

@@ -43,26 +43,26 @@ const userData = [
 ];
 
 // id, isCharged, isDamaged
-const scooter00 = new Scooter("100", true, true);
-const scooter01 = new Scooter("101", false, true);
-const scooter02 = new Scooter("102", true, false);
-const scooter03 = new Scooter("103", true, false);
-const scooter04 = new Scooter("104", true, true);
-const scooter05 = new Scooter("105", false, false);
-const scooter06 = new Scooter("106", true, false);
-const scooter07 = new Scooter("107", true, false);
-const scooter08 = new Scooter("108", false, false);
-const scooter09 = new Scooter("109", false, false);
-const scooter10 = new Scooter("110", false, false);
-const scooter11 = new Scooter("111", true, false);
-const scooter12 = new Scooter("112", true, true);
-const scooter13 = new Scooter("113", true, false);
-const scooter14 = new Scooter("114", true, false);
-const scooter15 = new Scooter("115", true, true);
-const scooter16 = new Scooter("116", true, false);
-const scooter17 = new Scooter("117", true, false);
-const scooter18 = new Scooter("118", true, false);
-const scooter19 = new Scooter("119", true, false);
+const scooter00 = new Scooter("100", true);
+const scooter01 = new Scooter("101", true);
+const scooter02 = new Scooter("102", false);
+const scooter03 = new Scooter("103", false);
+const scooter04 = new Scooter("104", true);
+const scooter05 = new Scooter("105", false);
+const scooter06 = new Scooter("106", false);
+const scooter07 = new Scooter("107", false);
+const scooter08 = new Scooter("108", false);
+const scooter09 = new Scooter("109", false);
+const scooter10 = new Scooter("110", true);
+const scooter11 = new Scooter("111", false);
+const scooter12 = new Scooter("112", true);
+const scooter13 = new Scooter("113", false);
+const scooter14 = new Scooter("114", false);
+const scooter15 = new Scooter("115", true);
+const scooter16 = new Scooter("116", false);
+const scooter17 = new Scooter("117", false);
+const scooter18 = new Scooter("118", false);
+const scooter19 = new Scooter("119", false);
 
 const scooterData = [
     scooter00,

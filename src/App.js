@@ -24,7 +24,7 @@ class App {
             cityObj.scooters.push(cityObj.damagedScooter[i]);
         };
         cityObj.damagedScooter = [];
-        console.log(`all scooter was repaired at this ${station.cityName}`);
+        console.log(`all scooter was repaired in ${station.cityName}`);
     };
 
     // return a list of station
