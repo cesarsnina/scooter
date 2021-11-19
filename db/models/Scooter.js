@@ -6,7 +6,6 @@ class Scooter extends Model{
 }
 
 Scooter.init({
-    scooterID: DataTypes.STRING,
     isCharged: DataTypes.INTEGER, // 0=false ; 1 = true
     isDamaged: DataTypes.INTEGER, // 0=false ; 1 = true
     

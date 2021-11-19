@@ -3,7 +3,7 @@ const Scooter = require('./models/Scooter')
 const Station = require('./models/Station')
 
 
-User.hasOne(Scooter, {as: current_scooter})
+User.hasOne(Scooter, {as: 'current_scooter'})
 
 
 Station.hasMany(Scooter)
