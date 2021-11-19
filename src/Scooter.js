@@ -3,6 +3,7 @@ class Scooter {
         this.id = id;
         this.isDamaged = isDamaged;
         this.origin = 'Shop';
+        this.batteryLife = 100
     };
 };
 

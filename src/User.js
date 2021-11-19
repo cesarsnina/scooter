@@ -60,6 +60,15 @@ class User {
         this.currentScooter = rentingScooter;
     };
 
+    
+    async usesScooter(time){
+      const batteryUsage = (time / 1000) * 5
+      console.log(`${this.fullName} starts using scooter ${this.currentScooter.id}!`)
+      await new Promise(resolve => setTimeout(resolve, time))
+      this.currentScooter.batteryLife -= batteryUsage;
+      console.log(`${this.fullName} ends using scooter ${this.currentScooter.id} with ${this.currentScooter.batteryLife} left!`)
+    }
+
     // assign scooter to new station and remove scooter from user
     returnScooter(dropOffStation) {
         if (!validateIfStationExist(dropOffStation)) return;
