@@ -1,21 +1,29 @@
-const Station = require("./../src/Station")
-const Scooter = require('./../src/Scooter')
+const { stationData, scooterData } = require('../src/data/seed');
 
-describe("Station class", () => {
-    let manhattanStation = new Station('Manhattan');
+describe('Station class data type', () => {
+    test('station cityName should be a string', () => {
+        expect(typeof stationData[0].cityName).toBe('string');
+        expect(typeof stationData[1].cityName).toBe('string');
+    });
 
-        const scooter1 = new Scooter("1", manhattanStation, true, false)
-        const scooter2 = new Scooter("2", manhattanStation, true, false)
-        const scooter3 = new Scooter("3", manhattanStation, true, false)
+    test('station scooters and damagedScooter should be an array', () => {
+        expect(Array.isArray(stationData[0].scooters)).toBe(true);
+        expect(Array.isArray(stationData[0].damagedScooter)).toBe(true);
+    });
+});
 
-        manhattanStation.addScooter(scooter1)
-        manhattanStation.addScooter(scooter2)
-        manhattanStation.addScooter(scooter3)
+describe('Station can add scooter', () => {
+    test('addScooter add scooter to station', () => {
+        expect(stationData[0].scooters.length).toBe(0);
+        expect(stationData[0].damagedScooter.length).toBe(0);
 
-    test("Station has a name", () => {
-        expect(typeof manhattanStation.cityName).toBe('string')
-    }) 
-    test("Scooters can be added to the station", () => {
-        expect(manhattanStation.scooters.length).toBe(3)
-    })
-})
+        stationData[0].addScooter(scooterData[0]);
+        stationData[0].addScooter(scooterData[1]);
+        stationData[0].addScooter(scooterData[2]);
+        stationData[0].addScooter(scooterData[3]);
+        stationData[0].addScooter(scooterData[4]);
+
+        expect(stationData[0].scooters.length).toBe(2);
+        expect(stationData[0].damagedScooter.length).toBe(3);
+    });
+});

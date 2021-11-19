@@ -1,17 +1,25 @@
-const Scooter = require('./../src/Scooter');
+const { scooterData, stationData } = require('../src/data/seed');
 
 describe('Scooter class data type', () => {
-    const scooter1 = new Scooter('117', 'Queens', true, false);
     test('id should be a string', () => {
-        expect(typeof scooter1.id).toBe('string');
+        expect(typeof scooterData[2].id).toBe('string');
     });
-    test('origin should be a string', () => {
-        expect(typeof scooter1.origin).toBe('string');
-    }); 
-    test('isCharged should be a boolean', () => {
-        expect(typeof scooter1.isCharged).toBe('boolean');
-    }); 
+
     test('isDamaged should be a boolean', () => {
-        expect(typeof scooter1.isDamaged).toBe('boolean');
-    }); 
+        expect(typeof scooterData[2].isDamaged).toBe('boolean');
+    });
+
+    test('scooter origin should be string', () => {
+        expect(typeof (scooterData[2].origin)).toBe('string');
+    });
+});
+
+describe('Scooter class origin', () => {
+    test('scooter have an origin of Shop until moved to a station', () => {
+        expect(scooterData[2].origin).toBe('Shop');
+
+        stationData[2].addScooter(scooterData[2]);
+
+        expect(scooterData[2].origin).toBe('Queens');
+    });
 });

@@ -4,7 +4,6 @@ class Station {
     constructor(cityName) {
         this.cityName = cityName;
         this.scooters = [];
-
         this.damagedScooter = [];
         this.constructor.stations.push(this);
     };
