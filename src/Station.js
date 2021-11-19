@@ -27,12 +27,14 @@ class Station {
      */
     async chargeScooter(scooter) {
         if (scooter.isBroken) throw new Error('cannot charge broken scooter');
+        if (scooter.batteryLife === 100) throw new Error('scooter already charged!');
 
         const amountToCharge = 100 - scooter.batteryLife;
 
+        scooter.batteryLife = 100;
         await new Promise(resolve => setTimeout(resolve, amountToCharge * 1000));
 
-        console.log('scooter fully charged');
+        console.log(`scooter charged back to ${scooter.batteryLife}!`);
     }
 }
 
